@@ -771,6 +771,7 @@ function GUIScoreboard:UpdateTeam(updateTeam)
         local isSteamFriend = playerRecord.IsSteamFriend
         local playerSkill = playerRecord.Skill
         local commanderColor = GUIScoreboard.kCommanderFontColor
+        local alienUpgrades = player["AlienUpgrades"]
         
         if isVisibleTeam and teamNumber == kTeam1Index then
             local currentTech = GetTechIdsFromBitMask(playerRecord.Tech)
@@ -780,6 +781,24 @@ function GUIScoreboard:UpdateTeam(updateTeam)
                 else
                     playerStatus = Locale.ResolveString("STATUS_JETPACK")
                 end
+            end
+        end
+        
+        if isVisibleTeam and teamNumber == kTeam2Index then
+            local currentTech = GetTechIdsFromBitMask(playerRecord.Tech)
+            for i = 1, 3 do
+                if #currentTech >= i then -- TODO: sets texture every frame :( do this only on change somehow
+                    alienUpgrades[i]:SetTexture("ui/buildmenu.dds")
+                    alienUpgrades[i]:SetTexturePixelCoordinates(unpack(GetTextureCoordinatesForIcon(tonumber(currentTech[i]))))
+                    alienUpgrades[i]:SetColor(Color(1, 0.792, 0.227))
+                    alienUpgrades[i]:SetIsVisible(true)
+                else
+                    alienUpgrades[i]:SetIsVisible(false) -- we're both on aliens but he doesn't have the upgrade anymore
+                end
+            end
+        else
+            for i = 1,3 do
+                alienUpgrades[i]:SetIsVisible(false) -- if one of us was previously on aliens, this needs to be hidden again
             end
         end
         
@@ -1206,11 +1225,24 @@ function GUIScoreboard:CreatePlayerItem()
     table.insert(iconTable, playerVoiceIcon)
     table.insert(iconTable, playerTextIcon)
     
+    local alienUpgradeItems = {}
+    -- Alien upgrade images
+    for i = 1,3 do -- TODO: find a replacement for magic 3
+        local alienUpgradeImage = GUIManager:CreateGraphicItem()
+        alienUpgradeImage:SetSize(Vector(kPlayerVoiceChatIconSize, kPlayerVoiceChatIconSize, 0) * GUIScoreboard.kScalingFactor)
+        alienUpgradeImage:SetAnchor(GUIItem.Left, GUIItem.Center)
+        alienUpgradeImage:SetIsVisible(false)
+        alienUpgradeImage:SetStencilFunc(GUIItem.NotEqual)
+        playerItem:AddChild(alienUpgradeImage)
+        table.insert(alienUpgradeItems, alienUpgradeImage)
+        table.insert(iconTable, alienUpgradeImage)
+    end
+    
     return { Background = playerItem, Number = playerNumber, Name = playerNameItem,
         Voice = playerVoiceIcon, Status = statusItem, Score = scoreItem, Kills = killsItem,
         Assists = assistsItem, Deaths = deathsItem, Resources = resItem, Ping = pingItem,
         BadgeItems = badgeItems, SkillBar = playerSkillBar, Text = playerTextIcon,
-        SteamFriend = steamFriendIcon, IconTable = iconTable
+        SteamFriend = steamFriendIcon, AlienUpgrades = alienUpgradeItems, IconTable = iconTable
     }
     
 end
