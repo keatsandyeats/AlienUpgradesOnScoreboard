@@ -91,6 +91,16 @@ local networkVars =
     twoHives = "private boolean",
     threeHives = "private boolean",
     
+    hasCrushUpgrade = "boolean",
+    hasCarapaceUpgrade = "boolean",
+    hasRegenerationUpgrade = "boolean",
+    
+    hasAuraUpgrade = "boolean",
+    hasFocusUpgrade = "boolean",
+    hasVampirismUpgrade = "boolean",
+    
+    hasSilenceUpgrade = "boolean",
+    hasCelerityUpgrade = "boolean",
     hasAdrenalineUpgrade = "boolean",
     
     enzymed = "boolean",
