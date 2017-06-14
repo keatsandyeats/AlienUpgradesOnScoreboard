@@ -1,1 +1,2 @@
 ModLoader.SetupFileHook("lua/GUIScoreboard.lua", "lua/AlienUpgradesOnScoreboard/GUIScoreboard.lua", "replace")
+ModLoader.SetupFileHook("lua/NS2Plus/Client/CHUD_Options.lua", "lua/AlienUpgradesOnScoreboard/CHUD_Options.lua", "post")

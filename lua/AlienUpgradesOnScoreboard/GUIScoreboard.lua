@@ -784,7 +784,11 @@ function GUIScoreboard:UpdateTeam(updateTeam)
             end
         end
         
-        if isVisibleTeam and teamNumber == kTeam2Index then
+        -- if ns2+ is active, use its options menu. if not, just enable the display.
+        local showAlienUpgrades = true
+        if CHUDGetOption then showAlienUpgrades = CHUDGetOption("alienupgradesscoreboard") end
+        
+        if isVisibleTeam and teamNumber == kTeam2Index and showAlienUpgrades then
             local currentTech = GetTechIdsFromBitMask(playerRecord.Tech)
             for i = 1, 3 do
                 if #currentTech >= i then -- TODO: sets texture every frame :( do this only on change somehow
