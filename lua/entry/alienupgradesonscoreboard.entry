@@ -1,4 +1,5 @@
 modEntry = {
+	Client = "lua/AlienUpgradesOnScoreboard/Client.lua",
 	FileHooks = "lua/AlienUpgradesOnScoreboard/FileHooks.lua",
 	Priority = 150
 }
