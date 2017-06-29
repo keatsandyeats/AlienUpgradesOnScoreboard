@@ -9,9 +9,7 @@ If your **server doesn't have NS2+**, all aliens will see each other's upgrades 
 If your **server has NS2+**, a toggle will be added to each client's NS2+ options menu. Later playing on a server without NS2+ will reset the option to default, which is to hide the upgrades.
 
 ## Compatibility
-This mod **fully replaces GUIScoreboard.lua**. (I tried to work around it but failed. Sorry.) If you have other conflicting mods, let me know which and I might change the priority or solve the conflict somehow.  
-
-Known compatible mods include:  
-* NS2+
-* Shine
-* NSL Mod & NSL Comp Mod
+This mod places the new icons into each player's IconTable (where vanilla places the icons for Steam friend, voice muted, and chat muted).
+In vanilla, IconTable is the same size for each player. This mod relies on that being true. 
+If your server adds a different number of entries to each player's IconTable, this mod is going to have a bad time.
+Changing the size of IconTable is fine, as long as it's the same size for each player.
