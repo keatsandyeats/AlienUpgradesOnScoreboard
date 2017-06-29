@@ -6,7 +6,7 @@ For code, questions, and bug reports, please visit the [GitHub repo](https://git
 ## Usage
 Put it on your server.  
 If your **server doesn't have NS2+**, all aliens will see each other's upgrades on the scoreboard.  
-If your **server has NS2+**, a toggle will be added to each client's NS2+ options menu. Later playing on a server without NS2+ will reset the option to default, which is to hide the upgrades.
+If your **server has NS2+**, a toggle will be added to the "STATS" section of each client's NS2+ options menu. The default behavior is to not display the upgrades.  
 
 ## Compatibility
 This mod places the new icons into each player's IconTable (where vanilla places the icons for Steam friend, voice muted, and chat muted).

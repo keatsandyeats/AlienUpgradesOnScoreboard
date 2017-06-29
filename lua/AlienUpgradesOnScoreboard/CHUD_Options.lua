@@ -5,7 +5,7 @@ CHUDOptions.alienupgradesscoreboard = {
     type = "select",
     values = {"Hide", "Show"},
     defaultValue = false,
-    category = "misc",
+    category = "stats",
     valueType = "bool",
-    sort = "B04",
+    sort = "A02.5",
 }
