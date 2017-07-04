@@ -23,9 +23,8 @@ function(self)
         end
     end
         
-    local kPlayerVoiceChatIconSize = GetUpValue(GUIScoreboard.CreatePlayerItem, "kPlayerVoiceChatIconSize", {LocateRecurse = true}) --TODO: maybe getupvalue instead
+    local kPlayerVoiceChatIconSize = GetUpValue(GUIScoreboard.CreatePlayerItem, "kPlayerVoiceChatIconSize", {LocateRecurse = true})
     
-    local alienUpgradeItems = {}
     -- Alien upgrade images
     for i = 1,3 do -- TODO: find a replacement for magic 3
         local alienUpgradeImage = GUIManager:CreateGraphicItem()
@@ -45,8 +44,8 @@ originalUpdateTeam = Class_ReplaceMethod("GUIScoreboard", "UpdateTeam",
 function(self, updateTeam)
     originalUpdateTeam(self, updateTeam)
     
-    local kPlayerBadgeRightPadding = GetUpValue(GUIScoreboard.UpdateTeam, "kPlayerBadgeRightPadding", {LocateRecurse = true}) --TODO: get upvalue maybe
-    local GetIsVisibleTeam = GetUpValue(GUIScoreboard.UpdateTeam, "GetIsVisibleTeam", {LocateRecurse = true}) --TODO: no errors but check that this actually works
+    local kPlayerBadgeRightPadding = GetUpValue(GUIScoreboard.UpdateTeam, "kPlayerBadgeRightPadding", {LocateRecurse = true})
+    local GetIsVisibleTeam = GetUpValue(GUIScoreboard.UpdateTeam, "GetIsVisibleTeam", {LocateRecurse = true})
     
     local playerList = updateTeam["PlayerList"]
     local teamScores = updateTeam["GetScores"]()
